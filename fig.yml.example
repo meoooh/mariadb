@@ -1,0 +1,4 @@
+db:
+  build: .
+  environment:
+    - MARIADB_ID=newbie
