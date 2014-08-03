@@ -9,7 +9,9 @@ RUN add-apt-repository -y 'deb http://ftp.kaist.ac.kr/mariadb/repo/10.0/ubuntu t
 
 RUN apt-get install -qq -y mariadb-server
 
-RUN sed -i 's/^\(bind-address\s.*\)/# \1/' /etc/mysql/my.cnf
+RUN rm -rf /var/lib/mysql/*
+
+RUN sed -i -r 's/bind-address.*$/bind-address = 0.0.0.0/' /etc/mysql/my.cnf
 
 ADD create_account.sh /create_account.sh
 
