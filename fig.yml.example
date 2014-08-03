@@ -1,3 +1,4 @@
+# Reference: http://www.fig.sh/yml.html
 db:
   build: .
   environment:
