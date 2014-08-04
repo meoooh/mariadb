@@ -2,6 +2,7 @@
 
 # forked from http://goo.gl/LW1Ahp
 
+HOST=$(hostname -I)
 if [[ ! -d /var/lib/mysql/mysql ]]; then
     mysql_install_db > /dev/null
     /usr/bin/mysqld_safe &
@@ -20,7 +21,6 @@ if [[ ! -d /var/lib/mysql/mysql ]]; then
     mysql -uroot -e "CREATE USER '$ID'@'%' IDENTIFIED BY '$PASS'"
     mysql -uroot -e "GRANT ALL PRIVILEGES ON *.* TO '$ID'@'%' WITH GRANT OPTION"
 
-    HOST=$(hostname -I)
     echo "========================================================================"
     echo "You can now connect to this MariaDB Server using:"
     echo ""
@@ -46,6 +46,7 @@ if [[ ! -d /var/lib/mysql/mysql ]]; then
     done
 else
     echo "Using an existing volume of MariaDB"
+    echo "host is $HOST"
 fi
 
 /usr/bin/mysqld_safe
