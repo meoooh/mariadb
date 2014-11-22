@@ -1,7 +1,7 @@
 FROM ubuntu:14.04
 MAINTAINER hgk617@naver.com
 
-RUN apt-get install -qq -y software-properties-common pwgen
+RUN apt-get update && apt-get install -qq -y software-properties-common pwgen
 
 RUN apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
 
